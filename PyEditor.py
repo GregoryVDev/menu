@@ -7,3 +7,13 @@ class PyEditor:
 
     def create_window(self):
         self.master.title("Nouveau document - Editeur de texte")
+        self.master.geometry("1200x700")
+
+# Condition spéciale utilisée pour contrôler l'exécution d'un script
+if __name__ == "__main__":
+    master = Tk()
+    editor = PyEditor(master)
+    editor.create_window()
+
+
+    master.mainloop()
