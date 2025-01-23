@@ -6,3 +6,4 @@ class PyEditor:
         self.master = master
 
     def create_window(self):
+        self.master.title("Nouveau document - Editeur de texte")
