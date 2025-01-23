@@ -9,6 +9,10 @@ class PyEditor:
         self.master.title("Nouveau document - Editeur de texte")
         self.master.geometry("1200x700")
 
+    def create_textarea(self):
+        self.textarea = Text(self.master, font=("ubuntu", 18))
+
+
 # Condition spéciale utilisée pour contrôler l'exécution d'un script
 if __name__ == "__main__":
     master = Tk()
