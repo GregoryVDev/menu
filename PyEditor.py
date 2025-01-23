@@ -15,7 +15,12 @@ class PyEditor:
     def create_textarea(self):
         self.textarea = Text(self.master, font=("ubuntu", 18))
         # Mettre un pack pour activer la zone de text (expand permet d'étaler le texte sur toute la fenêtre et fill BOTH pour dire verticalement et horizontalement)
-        self.textarea.pack(side=LEFT, expand = True, fill= BOTH)
+        self.textarea.pack(side = LEFT, expand = True, fill= BOTH)
+        # Afficher le scrollbar sur la fenêtre master verticalement
+        self.scroll = Scrollbar(self.master, command = self.textarea.yview())
+        self.textarea.configure(yscrollcommand = self.scroll.set)
+        # Permet de l'afficher à droite en vertical
+        self.scroll.pack(side = RIGHT, fill = Y)
 
 
 # Condition spéciale utilisée pour contrôler l'exécution d'un script
