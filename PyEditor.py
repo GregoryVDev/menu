@@ -76,6 +76,8 @@ if __name__ == "__main__":
     editor.create_window()
     # Permet d'écrire sur la fenêtre
     editor.create_textarea()
+    # Permet d'afficher la barMenu
+    editor.add_menu()
 
 
     master.mainloop()
