@@ -48,6 +48,23 @@ class PyEditor:
     def close_document(self):
         pass
 
+
+    # Faire une fonction pour copier
+    def copy(self):
+        pass
+
+
+    # Faire une fonction pour couper
+    def cut(self):
+        pass
+
+
+    # Faire une fonction pour coller
+    def paste(self):
+        pass
+
+
+    # Faire une fonction pour ajouter un menu
     def add_menu(self):
 
         # Créer une barre de menu
@@ -71,6 +88,21 @@ class PyEditor:
 
         # Créer un nouveau menu de type hiérarchique en associant un menu donné à un menu parent
         barMenu.add_cascade(label = "Fichier", menu = filesMenu)
+
+
+        # Menu Edition
+        editionMenu = Menu(barMenu, font=("ubuntu", 14))
+
+        editionMenu.add_command(label="Copier", command=self.copy)
+        editionMenu.add_command(label="Couper", command=self.cut)
+        # Ajouter une ligne pour séparer entre "ouvrir document" et "enregistrer sous"
+        editionMenu.add_separator()
+        editionMenu.add_command(label="Coller", command=self.paste)
+
+        barMenu.add_cascade(label = "Edition", menu = editionMenu)
+
+
+
 
 # Condition spéciale utilisée pour contrôler l'exécution d'un script
 if __name__ == "__main__":
