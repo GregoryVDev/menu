@@ -73,8 +73,8 @@ class PyEditor:
         # Configurer la barre menu et la mettre à jour dans la fenêtre principale
         self.master.config(menu = barMenu)
 
-        # La barre de menu qui aura comme police ubuntu et en 14px
-        filesMenu = Menu(barMenu, font=("ubuntu", 14))
+        # La barre de menu qui aura comme police ubuntu et en 14px (tearoff false permet que le menu ne soit plus détaché (--------------)
+        filesMenu = Menu(barMenu, font=("ubuntu", 14), tearoff=False)
 
         # Afficher dans le menu les onglets :
         filesMenu.add_command(label = "Nouveau document", accelerator="Ctrl+N", command = self.new_document)
@@ -90,8 +90,8 @@ class PyEditor:
         barMenu.add_cascade(label = "Fichier", menu = filesMenu)
 
 
-        # Menu Edition
-        editionMenu = Menu(barMenu, font=("ubuntu", 14))
+        # Menu Edition (tearoff false permet que le menu ne soit plus détaché (--------------)
+        editionMenu = Menu(barMenu, font=("ubuntu", 14), tearoff=False )
 
         editionMenu.add_command(label="Copier", accelerator="Ctrl+C", command=self.copy)
         editionMenu.add_command(label="Couper", accelerator="Ctrl+X", command=self.cut)
