@@ -86,7 +86,7 @@ class PyEditor:
         filesMenu.add_separator()
         filesMenu.add_command(label = "Fermer", command = self.close_document)
 
-        # Créer un nouveau menu de type hiérarchique en associant un menu donné à un menu parent
+        # Créer un nouveau menu de type hiérarchique en associant un menu donné à un menu parent (permet d'afficher "fichier" comme onglet)
         barMenu.add_cascade(label = "Fichier", menu = filesMenu)
 
 
@@ -99,6 +99,8 @@ class PyEditor:
         editionMenu.add_separator()
         editionMenu.add_command(label="Coller", command=self.paste)
 
+
+        # Permet d'afficher "edition" comme onglet
         barMenu.add_cascade(label = "Edition", menu = editionMenu)
 
 
