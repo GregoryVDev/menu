@@ -62,8 +62,11 @@ class PyEditor:
         # Afficher dans le menu les onglets :
         filesMenu.add_command(label = "Nouveau document", command = self.new_document)
         filesMenu.add_command(label = "Ouvrir document", command = self.open_document)
+        # Ajouter une ligne pour séparer entre "ouvrir document" et "enregistrer sous"
+        filesMenu.add_separator()
         filesMenu.add_command(label = "Enregistrer sous", command = self.save_as)
         filesMenu.add_command(label = "Enregistrer", command = self.save)
+        filesMenu.add_separator()
         filesMenu.add_command(label = "Fermer", command = self.close_document)
 
         # Créer un nouveau menu de type hiérarchique en associant un menu donné à un menu parent
