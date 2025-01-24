@@ -39,6 +39,14 @@ class PyEditor:
         pass
 
 
+    # Faire une fonction pour enregistrer
+    def save(self):
+        pass
+
+
+    # Faire une fonction pour fermer
+    def close_document(self):
+        pass
 
     def add_menu(self):
 
@@ -55,6 +63,8 @@ class PyEditor:
         filesMenu.add_command(label = "Nouveau document", command = self.new_document)
         filesMenu.add_command(label = "Ouvrir document", command = self.open_document)
         filesMenu.add_command(label = "Enregistrer sous", command = self.save_as)
+        filesMenu.add_command(label = "Enregistrer", command = self.save)
+        filesMenu.add_command(label = "Fermer", command = self.close_document)
 
 # Condition spéciale utilisée pour contrôler l'exécution d'un script
 if __name__ == "__main__":
