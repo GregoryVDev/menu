@@ -66,6 +66,9 @@ class PyEditor:
         filesMenu.add_command(label = "Enregistrer", command = self.save)
         filesMenu.add_command(label = "Fermer", command = self.close_document)
 
+        # Créer un nouveau menu de type hiérarchique en associant un menu donné à un menu parent
+        barMenu.add_cascade(label = "Fichier", menu = filesMenu)
+
 # Condition spéciale utilisée pour contrôler l'exécution d'un script
 if __name__ == "__main__":
     master = Tk()
