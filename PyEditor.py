@@ -1,6 +1,5 @@
 # Créatop, de la fenêtre principale et de la zone de texte
 from tkinter import *
-
 from PIL.ImageOps import expand
 
 
@@ -8,9 +7,11 @@ class PyEditor:
     def __init__(self, master):
         self.master = master
 
+
     def create_window(self):
         self.master.title("Nouveau document - Editeur de texte")
         self.master.geometry("1200x700")
+
 
     def create_textarea(self):
         self.textarea = Text(self.master, font=("ubuntu", 18))
@@ -22,6 +23,32 @@ class PyEditor:
         # Permet de l'afficher à droite en vertical
         self.scroll.pack(side = RIGHT, fill = Y)
 
+
+    # Faire une fonction pour créer un nouveau document
+    def new_document(self):
+        pass
+
+
+    # Faire une fonction pour ouvrir un document
+    def open_document(self):
+        pass
+
+
+
+    def add_menu(self):
+
+        # Créer une barre de menu
+        barMenu = Menu(self.master)
+
+        # Configurer la barre menu et la mettre à jour dans la fenêtre principale
+        self.master.config(menu = barMenu)
+
+        # La barre de menu qui aura comme police ubuntu et en 14px
+        filesMenu = Menu(barMenu, font=("ubuntu", 14))
+
+        # Afficher dans le menu les onglets :
+        filesMenu.add_command(label = "Nouveau document", command = self.new_document)
+        filesMenu.add_command(label = "Ouvrir document", command = self.open_document)
 
 # Condition spéciale utilisée pour contrôler l'exécution d'un script
 if __name__ == "__main__":
