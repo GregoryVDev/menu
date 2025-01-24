@@ -77,14 +77,14 @@ class PyEditor:
         filesMenu = Menu(barMenu, font=("ubuntu", 14))
 
         # Afficher dans le menu les onglets :
-        filesMenu.add_command(label = "Nouveau document", command = self.new_document)
-        filesMenu.add_command(label = "Ouvrir document", command = self.open_document)
+        filesMenu.add_command(label = "Nouveau document", accelerator="Ctrl+N", command = self.new_document)
+        filesMenu.add_command(label = "Ouvrir document", accelerator="Ctrl+O", command = self.open_document)
         # Ajouter une ligne pour séparer entre "ouvrir document" et "enregistrer sous"
         filesMenu.add_separator()
-        filesMenu.add_command(label = "Enregistrer sous", command = self.save_as)
-        filesMenu.add_command(label = "Enregistrer", command = self.save)
+        filesMenu.add_command(label = "Enregistrer sous", accelerator="Ctrl+Shift+S", command = self.save_as)
+        filesMenu.add_command(label = "Enregistrer", accelerator="Ctrl+S", command = self.save)
         filesMenu.add_separator()
-        filesMenu.add_command(label = "Fermer", command = self.close_document)
+        filesMenu.add_command(label = "Fermer", accelerator="Ctrl+F", command = self.close_document)
 
         # Créer un nouveau menu de type hiérarchique en associant un menu donné à un menu parent (permet d'afficher "fichier" comme onglet)
         barMenu.add_cascade(label = "Fichier", menu = filesMenu)
@@ -93,11 +93,11 @@ class PyEditor:
         # Menu Edition
         editionMenu = Menu(barMenu, font=("ubuntu", 14))
 
-        editionMenu.add_command(label="Copier", command=self.copy)
-        editionMenu.add_command(label="Couper", command=self.cut)
+        editionMenu.add_command(label="Copier", accelerator="Ctrl+C", command=self.copy)
+        editionMenu.add_command(label="Couper", accelerator="Ctrl+X", command=self.cut)
         # Ajouter une ligne pour séparer entre "ouvrir document" et "enregistrer sous"
         editionMenu.add_separator()
-        editionMenu.add_command(label="Coller", command=self.paste)
+        editionMenu.add_command(label="Coller", accelerator="Ctrl+V", command=self.paste)
 
 
         # Permet d'afficher "edition" comme onglet
