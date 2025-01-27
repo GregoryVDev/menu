@@ -1,6 +1,6 @@
 # Créatop, de la fenêtre principale et de la zone de texte
 from tkinter import *
-from PIL.ImageOps import expand
+from tkinter import messagebox
 
 
 class PyEditor:
@@ -36,7 +36,24 @@ class PyEditor:
 
     # Faire une fonction pour enregistrer sous
     def save_as(self):
-        pass
+
+        try:
+            file= filedialog.asksaveasfilename(initialdir = "C", title = "Enregistrer sous",
+                                               initialfile = "Insérer un nom",
+                                               defaultextension = ".txt",
+                                               filetypes = [("Fichier texte", "*.text"),
+                                                            ("Script Python", "*.py"),
+                                                            ("Script html", "*.html"),
+                                                            ("Scrit Javascript", "*.js"),
+                                                            # Permet de mettre une extensions pas reconnu
+                                                            ("Tous fichiers", "*.*")
+
+                                               ])
+
+
+        except Exception as e:
+            messagebox.showerror("Exception", e)
+
 
 
     # Faire une fonction pour enregistrer
