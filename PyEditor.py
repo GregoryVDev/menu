@@ -42,6 +42,29 @@ class PyEditor:
             # Dès qu'on enregistre notre travail, la page devient vide
             self.textarea.delete(1.0, END)
 
+        self.filename = filedialog.askopenfilename(initialdir = "C", title = "Ouvrir un document",
+                                               defaultextension = ".txt",
+                                               filetypes = [("Fichier texte", "*.text"),
+                                                            ("Script Python", "*.py"),
+                                                            ("Script html", "*.html"),
+                                                            ("Scrit Javascript", "*.js"),
+                                                            # Permet de mettre une extensions pas reconnue
+                                                            ("Tous fichiers", "*.*")
+
+                                               ])
+
+        if self.filename:
+            try:
+                file = open(self.filename, "r")
+                fr = file.read()
+                file.close()
+                self.textarea.insert("1.0", fr)
+
+
+            except Exception as e:
+                (messagebox.showerror("Ouvrir document", e))
+
+
 
     # Faire une fonction pour enregistrer sous
     def save_as(self):
