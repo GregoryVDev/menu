@@ -64,6 +64,9 @@ class PyEditor:
         pass
 
 
+    def selectAll(self):
+        pass
+
     # Faire une fonction pour ajouter un menu
     def add_menu(self):
 
@@ -98,6 +101,8 @@ class PyEditor:
         # Ajouter une ligne pour séparer entre "ouvrir document" et "enregistrer sous"
         editionMenu.add_separator()
         editionMenu.add_command(label="Coller", accelerator="Ctrl+V", command=self.paste)
+        editionMenu.add_separator()
+        editionMenu.add_command(label="Selectionner tout", accelerator="Ctrl+A", command=self.selectAll)
 
 
         # Permet d'afficher "edition" comme onglet
