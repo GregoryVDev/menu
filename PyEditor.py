@@ -1,11 +1,13 @@
 # Créatop, de la fenêtre principale et de la zone de texte
 from tkinter import *
 from tkinter import messagebox
+from tkinter import filedialog
 
 
 class PyEditor:
     def __init__(self, master):
         self.master = master
+        self.filename = None
 
 
     def create_window(self):
@@ -38,17 +40,31 @@ class PyEditor:
     def save_as(self):
 
         try:
-            file= filedialog.asksaveasfilename(initialdir = "C", title = "Enregistrer sous",
-                                               initialfile = "Insérer un nom",
+            file = filedialog.asksaveasfilename(initialdir = "C", title = "Enregistrer sous",
+                                               initialfile = "Inserer un nom",
                                                defaultextension = ".txt",
                                                filetypes = [("Fichier texte", "*.text"),
                                                             ("Script Python", "*.py"),
                                                             ("Script html", "*.html"),
                                                             ("Scrit Javascript", "*.js"),
-                                                            # Permet de mettre une extensions pas reconnu
+                                                            # Permet de mettre une extensions pas reconnue
                                                             ("Tous fichiers", "*.*")
 
                                                ])
+
+            # Récupérer le contenu dans la zone du text et le mettre dans une variable (depuis le premier caractère jusqu'à la fin)
+            content_file =  self.textarea.get(1.0, END)
+            if file:
+                # Ouvre le fichier choisi en mode écriture (il peut écraser un contenu existant s'il y a déjà un fichier au même endroit avec le même nom)
+                f = open(file, "w")
+                # Écrit dans le fichier le contenu récupéré de textarea
+                f.write(content_file)
+                # Ferme le fichier après l'avoir écrit
+                f.close()
+                # Met à jour une variable interne pour indiquer que le fichier est sauvegardé
+                self.filename = file
+
+
 
 
         except Exception as e:
