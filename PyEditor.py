@@ -33,7 +33,14 @@ class PyEditor:
 
     # Faire une fonction pour ouvrir un document
     def open_document(self):
-        pass
+        if len(self.textarea.get(1.0, END+ '-1c')) >0:
+            message_save = messagebox.askyesno("ENREGISTRER", "L'éditeur va quitter le document ouvert, voulez-vous l'enregistrer avant d'ouvrir un autre document?")
+
+            # Si on appuie sur yes alors on déclenche le processure d'enregistrement
+            if message_save >0:
+                self.save()
+            # Dès qu'on enregistre notre travail, la page devient vide
+            self.textarea.delete(1.0, END)
 
 
     # Faire une fonction pour enregistrer sous
@@ -92,14 +99,6 @@ class PyEditor:
         # appelle une autre méthode (save_as) pour demander à l'utilisateur de spécifier un nom de fichier.
         else:
             self.save_as()
-
-
-
-
-
-
-
-
 
 
     # Faire une fonction pour fermer
