@@ -74,7 +74,32 @@ class PyEditor:
 
     # Faire une fonction pour enregistrer
     def save(self):
-        pass
+        # Si le document enregistré a déjà un nom alors :
+        if self.filename:
+
+            try:
+                # Récupère le contenu de la zone de texte (textarea) depuis la première ligne jusqu'à la fin.
+                content_file = self.textarea.get(1.0, END)
+                # Ouvre le fichier avec le nom donné (self.filename) en mode écriture ("w").
+                # Si le fichier existe déjà, son contenu sera remplacé.
+                with open(self.filename, "w") as f:
+                    # Écrit le contenu récupéré dans le fichier.
+                    f.write(content_file)
+            # Si une erreur se produit lors de l'enregistrement, affiche un message d'erreur avec la boîte de dialogue messagebox.
+            except Exception as e:
+                messagebox.showerror("Exception", e)
+        # Si le fichier n'a pas encore de nom (self.filename est vide ou None),
+        # appelle une autre méthode (save_as) pour demander à l'utilisateur de spécifier un nom de fichier.
+        else:
+            self.save_as()
+
+
+
+
+
+
+
+
 
 
     # Faire une fonction pour fermer
