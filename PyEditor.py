@@ -25,6 +25,8 @@ class PyEditor:
         # Permet de l'afficher à droite en vertical
         self.scroll.pack(side = RIGHT, fill = Y)
 
+        self.shortcut()
+
 
     # Faire une fonction pour créer un nouveau document
     def new_document(self):
@@ -153,23 +155,24 @@ class PyEditor:
         else:
             self.textarea.quit()
 
+    # *args veut donner aux méthodes des paramètres
 
     # Faire une fonction pour copier
-    def copy(self):
+    def copy(self, *args):
         self.textarea.event_generate('<<Copy>>')
 
 
     # Faire une fonction pour couper
-    def cut(self):
+    def cut(self, *args):
         self.textarea.event_generate('<<Cut>>')
 
 
     # Faire une fonction pour coller
-    def paste(self):
+    def paste(self, *args):
         self.textarea.event_generate('<<Paste>>')
 
 
-    def selectAll(self):
+    def selectAll(self, *args):
         self.textarea.event_generate('<<SelectAll>>')
 
     # Faire une fonction pour ajouter un menu
@@ -216,23 +219,21 @@ class PyEditor:
 
     def shortcut(self):
         # Permet de créer le raccourcis un nouveau document
-        self.textarea.bind('<Control-n>', self.new_document())
+        self.textarea.bind('<Control-n>', lambda event: self.new_document())
         # Permet de créer le raccourcis ouvrir
-        self.textarea.bind('<Control-o>', self.open_document())
+        self.textarea.bind('<Control-o>', lambda event: self.open_document())
         # Permet de créer le raccourcis enregistrer
-        self.textarea.bind('<Control-s>', self.save())
+        self.textarea.bind('<Control-s>', lambda event: self.save())
         # Permet de créer le raccourcis enregistrer sous
-        self.textarea.bind('<Control-shift-s>', self.save_as())
+        self.textarea.bind('<Control-Shift-s>', lambda event: self.save_as())
         # Permet de créer le raccourcis copier
-        self.textarea.bind('<Control-c>', self.copy())
+        self.textarea.bind('<Control-c>', lambda event: self.copy())
         # Permet de créer le raccourcis couper
-        self.textarea.bind('<Control-x>', self.cut())
+        self.textarea.bind('<Control-x>', lambda event: self.cut())
         # Permet de créer le raccourcis coller
-        self.textarea.bind('<Control-v>', self.paste())
+        self.textarea.bind('<Control-v>', lambda event: self.paste())
         # Permet de créer le raccourcis sélectionner tout
-        self.textarea.bind('<Control-a>', self.selectAll())
-
-
+        self.textarea.bind('<Control-a>', lambda event: self.selectAll())
 
 
 # Condition spéciale utilisée pour contrôler l'exécution d'un script
