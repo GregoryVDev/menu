@@ -28,7 +28,15 @@ class PyEditor:
 
     # Faire une fonction pour créer un nouveau document
     def new_document(self):
-        pass
+        if len(self.textarea.get(1.0, END + '-1c')) > 0:
+            message_save = messagebox.askyesno("ENREGISTRER",
+                                               "L'éditeur va quitter le document ouvert, voulez-vous l'enregistrer avant d'ouvrir un autre document?")
+
+            if message_save >0:
+                self.save()
+        self.textarea.delete(1.0, END)
+
+
 
 
     # Faire une fonction pour ouvrir un document
@@ -53,11 +61,17 @@ class PyEditor:
 
                                                ])
 
+
+        # Si l'utilisateur a déjà choisi d'ouvrir un document
         if self.filename:
             try:
+                # Ouvrir le document
                 file = open(self.filename, "r")
+                # Lire le contenu
                 fr = file.read()
+                # Fermer le document
                 file.close()
+                # Insérer son contenu dans la zone de text
                 self.textarea.insert("1.0", fr)
 
 
@@ -161,7 +175,7 @@ class PyEditor:
 
         # Afficher dans le menu les onglets :
         filesMenu.add_command(label = "Nouveau document", accelerator="Ctrl+N", command = self.new_document)
-        filesMenu.add_command(label = "Ouvrir document", accelerator="Ctrl+O", command = self.open_document)
+        filesMenu.add_command(label = "Ouvrir", accelerator="Ctrl+O", command = self.open_document)
         # Ajouter une ligne pour séparer entre "ouvrir document" et "enregistrer sous"
         filesMenu.add_separator()
         filesMenu.add_command(label = "Enregistrer sous", accelerator="Ctrl+Shift+S", command = self.save_as)
