@@ -214,6 +214,25 @@ class PyEditor:
         barMenu.add_cascade(label = "Edition", menu = editionMenu)
 
 
+    def shortcut(self):
+        # Permet de créer le raccourcis un nouveau document
+        self.textarea.bind('<Control-n>', self.new_document())
+        # Permet de créer le raccourcis ouvrir
+        self.textarea.bind('<Control-o>', self.open_document())
+        # Permet de créer le raccourcis enregistrer
+        self.textarea.bind('<Control-s>', self.save())
+        # Permet de créer le raccourcis enregistrer sous
+        self.textarea.bind('<Control-shift-s>', self.save_as())
+        # Permet de créer le raccourcis copier
+        self.textarea.bind('<Control-c>', self.copy())
+        # Permet de créer le raccourcis couper
+        self.textarea.bind('<Control-x>', self.cut())
+        # Permet de créer le raccourcis coller
+        self.textarea.bind('<Control-v>', self.paste())
+        # Permet de créer le raccourcis sélectionner tout
+        self.textarea.bind('<Control-a>', self.selectAll())
+
+
 
 
 # Condition spéciale utilisée pour contrôler l'exécution d'un script
