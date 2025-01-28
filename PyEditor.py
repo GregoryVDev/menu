@@ -156,21 +156,21 @@ class PyEditor:
 
     # Faire une fonction pour copier
     def copy(self):
-        pass
+        self.textarea.event_generate('<<Copy>>')
 
 
     # Faire une fonction pour couper
     def cut(self):
-        pass
+        self.textarea.event_generate('<<Cut>>')
 
 
     # Faire une fonction pour coller
     def paste(self):
-        pass
+        self.textarea.event_generate('<<Paste>>')
 
 
     def selectAll(self):
-        pass
+        self.textarea.event_generate('<<SelectAll>>')
 
     # Faire une fonction pour ajouter un menu
     def add_menu(self):
