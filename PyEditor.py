@@ -141,7 +141,7 @@ class PyEditor:
     # Faire une fonction pour fermer
     def close_document(self):
         if len(self.textarea.get(1.0, END+ '-1c')) >0:
-            message_save = messagebox.askyesno("ENREGISTRER", "L'éditeur va quitter le document ouvert, voulez-vous l'enregistrer avant d'ouvrir un autre document?")
+            save = messagebox.askyesno("ENREGISTRER", "L'éditeur va quitter le document ouvert, voulez-vous l'enregistrer avant d'ouvrir un autre document?")
 
             # Si il n'y a pas de contenu, alors on ferme directement la page
             if save <= 0:
@@ -150,6 +150,8 @@ class PyEditor:
             else:
                 self.save()
                 self.textarea.quit()
+        else:
+            self.textarea.quit()
 
 
     # Faire une fonction pour copier
