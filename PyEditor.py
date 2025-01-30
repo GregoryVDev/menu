@@ -37,6 +37,8 @@ class PyEditor:
             if message_save >0:
                 self.save()
         self.textarea.delete(1.0, END)
+        self.filename = None
+        self.set_title_window(self.filename)
 
 
 
@@ -75,6 +77,7 @@ class PyEditor:
                 file.close()
                 # Insérer son contenu dans la zone de text
                 self.textarea.insert("1.0", fr)
+                self.set_title_window(self.filename)
 
 
             except Exception as e:
@@ -109,9 +112,7 @@ class PyEditor:
                 f.close()
                 # Met à jour une variable interne pour indiquer que le fichier est sauvegardé
                 self.filename = file
-
-
-
+                self.set_title_window(self.filename)
 
         except Exception as e:
             messagebox.showerror("Exception", e)
@@ -171,9 +172,16 @@ class PyEditor:
     def paste(self, *args):
         self.textarea.event_generate('<<Paste>>')
 
-
+    # Faire une fonction pour tout sélectionner
     def selectAll(self, *args):
         self.textarea.event_generate('<<SelectAll>>')
+
+    # Faire une fonction pour modifier le titre
+    def set_title_window(self, name=None):
+        if name:
+            self.master.title(name + "PyEditor")
+        else:
+            self.master.title("Nouveau document - PyEditor")
 
     # Faire une fonction pour ajouter un menu
     def add_menu(self):
